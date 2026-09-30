@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComicCraft - AI Comic Story Creator</title>
+  <meta name="description" content="Generate personalized AI comic stories, panel artwork, and PDFs powered by Google Gemini AI models.">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand-logo">
+      <span>🎨 ComicCraft</span>
+      <span class="brand-badge">Gemini AI</span>
+    </div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/docs" target="_blank">API Docs</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1 class="hero-title">Create Your AI Comic</h1>
+      <p class="hero-subtitle">
+        Transform your story ideas into stunning 5-panel comic strips complete with narration, character dialogue, and vivid comic book illustrations.
+      </p>
+    </section>
+
+    <!-- Comic Generator Form -->
+    <section class="glass-card">
+      <form action="/generate" method="POST" class="comic-form" id="comicForm">
+        
+        <!-- Story Prompt Field -->
+        <div class="form-group">
+          <label for="story_prompt" class="form-label">
+            <span>✨ Story Prompt</span>
+          </label>
+          <textarea 
+            id="story_prompt" 
+            name="story_prompt" 
+            rows="3" 
+            class="form-textarea" 
+            placeholder="E.g., A brave cybernetic fox exploring an enchanted forest filled with glowing crystal ruins..."
+            required
+          >A brave fox exploring an enchanted forest</textarea>
+        </div>
+
+        <!-- Customizations Grid -->
+        <div class="form-grid">
+          
+          <!-- Character Name -->
+          <div class="form-group">
+            <label for="character_name" class="form-label">👤 Main Character Name</label>
+            <input 
+              type="text" 
+              id="character_name" 
+              name="character_name" 
+              class="form-input" 
+              value="Kitsu" 
+              placeholder="E.g., Kitsu"
+              required
+            >
+          </div>
+
+          <!-- Setting -->
+          <div class="form-group">
+            <label for="setting" class="form-label">🌍 Setting / Location</label>
+            <select id="setting" name="setting" class="form-select">
+              <option value="Enchanted Forest" selected>Enchanted Forest</option>
+              <option value="Cyberpunk City">Cyberpunk City</option>
+              <option value="Outer Space Station">Outer Space Station</option>
+              <option value="Ancient Kingdom Ruins">Ancient Kingdom Ruins</option>
+              <option value="High Tech Academy">High Tech Academy</option>
+            </select>
+          </div>
+
+          <!-- Story Tone -->
+          <div class="form-group">
+            <label for="story_tone" class="form-label">🎭 Story Tone</label>
+            <select id="story_tone" name="story_tone" class="form-select">
+              <option value="Dramatic" selected>Dramatic & Heroic</option>
+              <option value="Funny">Humorous & Light-hearted</option>
+              <option value="Mysterious">Mysterious & Dark</option>
+              <option value="Poetic">Poetic & Atmospheric</option>
+            </select>
+          </div>
+
+          <!-- Art Style -->
+          <div class="form-group">
+            <label for="art_style" class="form-label">🎨 Art Style</label>
+            <select id="art_style" name="art_style" class="form-select">
+              <option value="Comic Book" selected>Classic Comic Book</option>
+              <option value="Anime">Anime / Manga</option>
+              <option value="Pixel Art">Retro Pixel Art</option>
+              <option value="Watercolor">Watercolor Graphic Novel</option>
+              <option value="Realistic">Photorealistic Concept Art</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div style="text-align: center; margin-top: 1rem;">
+          <button type="submit" class="btn-primary" id="generateBtn">
+            <span>⚡ Generate Comic Story</span>
+          </button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>ComicCraft AI &copy; 2026. Built with FastAPI & Google Gemini Models.</p>
+  </footer>
+
+</body>
+</html>

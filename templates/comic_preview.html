@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ story_title }} - ComicCraft Preview</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand-logo">
+      <a href="/" style="color: inherit; text-decoration: none;">🎨 ComicCraft</a>
+      <span class="brand-badge">Gemini AI</span>
+    </div>
+    <nav class="nav-links">
+      <a href="/" class="btn-secondary">➕ Create New Comic</a>
+      <a href="{{ pdf_path }}" download class="btn-secondary" style="border-color: var(--primary-neon); color: var(--primary-neon);">📥 Download PDF</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <!-- Preview Header -->
+    <section class="preview-header">
+      <h1 class="hero-title">{{ story_title }}</h1>
+      <p class="hero-subtitle">
+        Character: <strong style="color: var(--accent-cyan);">{{ character_name }}</strong> | 
+        Setting: <strong style="color: var(--accent-gold);">{{ setting }}</strong> | 
+        Tone: <strong style="color: var(--accent-purple);">{{ story_tone }}</strong> | 
+        Style: <strong style="color: var(--primary-neon);">{{ art_style }}</strong>
+      </p>
+    </section>
+
+    <!-- 5-Panel Comic Display Grid -->
+    <section class="comic-grid">
+      {% for panel in layout %}
+      <article class="comic-panel-card">
+        
+        <!-- Left Column: Generated Image -->
+        <div class="panel-image-container">
+          <span class="panel-number-badge">PANEL {{ panel.panel_number }}</span>
+          <img src="{{ panel.image_path }}" alt="Panel {{ panel.panel_number }} Illustration" class="panel-img">
+        </div>
+
+        <!-- Right Column: Narrative Content -->
+        <div class="panel-content">
+          <h2 class="panel-title">{{ panel.title }}</h2>
+
+          {% if panel.scene_description %}
+          <p class="scene-desc">"{{ panel.scene_description }}"</p>
+          {% endif %}
+
+          {% if panel.caption %}
+          <div class="caption-box">
+            <span>{{ panel.caption }}</span>
+          </div>
+          {% endif %}
+
+          {% if panel.dialogue %}
+          <div class="dialogue-bubble">
+            <span>{{ panel.dialogue }}</span>
+          </div>
+          {% endif %}
+
+          {% if panel.narration %}
+          <div class="narration-box">
+            <span>📖 {{ panel.narration }}</span>
+          </div>
+          {% endif %}
+
+          {% if panel.image_prompt %}
+          <p class="prompt-reference">🔍 Prompt: {{ panel.image_prompt }}</p>
+          {% endif %}
+        </div>
+
+      </article>
+      {% endfor %}
+    </section>
+
+    <!-- Download Action Bar -->
+    <div class="action-bar">
+      <a href="{{ pdf_path }}" download class="btn-primary" id="downloadPdfBtn">
+        <span>📄 Download Your Comic as PDF</span>
+      </a>
+      <a href="/" class="btn-secondary">
+        <span>🔄 Create Another Comic</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>ComicCraft AI &copy; 2026. Powered by Google Gemini & FastAPI.</p>
+  </footer>
+
+</body>
+</html>
